@@ -23,4 +23,31 @@ controller.novo = async (req,res) => {
     }
 }
 
+controller.listar = async (req,res) =>{
+    try{
+       let dados = await Curso.find() // Traz tudo
+    res.send(dados) 
+    }
+    catch(erro){
+        console.log(erro)
+        res.status(500).send(erro)
+    }
+    
+}
+
+controller.obterUm = async (req,res) =>{
+    try{
+       const id = req.params.id
+    let obj =  await Curso.findById(id)
+
+    if(obj) res.send(obj)
+    else res.status(404).end()  
+    }
+    catch(erro){
+        console.log(erro)
+        res.status(500).send(erro)
+    }
+   
+
+}
 module.exports = controller

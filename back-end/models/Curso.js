@@ -18,7 +18,7 @@ const esquema = mongoose.Schema({
     nivel: {
         type: String,
         required: true,
-        enum: ['Básico','Intermediario','Avançado']
+        enum: ['Básico','Intermediário','Avançado']
     },
     valor_curso:{
         type: Number,
