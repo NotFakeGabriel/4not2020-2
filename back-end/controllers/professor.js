@@ -6,13 +6,13 @@ PUT             UPDATE
 DELETE          DELETE
 */
 
-const Curso = require('../models/Curso')
+const Professor = require('../models/Professor')
 
 const controller = {}
 
 controller.novo = async (req,res) => {
     try{
-        await Curso.create(req.body)
+        await Professor.create(req.body)
     //HTTP 201: Created
     res.status(201).end()
     }
@@ -25,7 +25,7 @@ controller.novo = async (req,res) => {
 
 controller.listar = async (req,res) =>{
     try{
-       let dados = await Curso.find() // Traz tudo
+       let dados = await Professor.find() // Traz tudo
     res.send(dados) 
     }
     catch(erro){
@@ -38,7 +38,7 @@ controller.listar = async (req,res) =>{
 controller.obterUm = async (req,res) =>{
     try{
        const id = req.params.id
-    let obj =  await Curso.findById(id)
+    let obj =  await Professor.findById(id)
 
     if(obj) res.send(obj)
     else res.status(404).end()  
@@ -55,7 +55,7 @@ controller.atualizar = async (req, res) => {
     try{
         const id = req.body._id
 
-    let ret =  await Curso.findByIdAndUpdate(id, req.body)
+    let ret =  await Professor.findByIdAndUpdate(id, req.body)
 
     if(ret) res.status(204).end()
     else res.status(404).end()
@@ -72,7 +72,7 @@ controller.excluir = async (req, res) => {
     try{
         const id = req.body._id
 
-    let ret = await Curso.findByIdAndDelete(id)
+    let ret = await Professor.findByIdAndDelete(id)
 
     if(ret) res.status(204).end()
     else res.status(404).end()

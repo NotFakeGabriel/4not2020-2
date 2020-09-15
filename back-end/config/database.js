@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 module.exports = uri => {
     mongoose.connect(uri, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true
     })
     mongoose.connection.on('connected', () =>
         console.log('==> Mongoose! conectado com sucesso ao servidor')
